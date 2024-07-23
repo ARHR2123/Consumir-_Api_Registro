@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EquiposTechRH</title>
+
+        <!-- Importacion de Bootstrap-->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+            </script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+    </head>
+
+    <body
+        style="background-image: url(https://static.vecteezy.com/system/resources/previews/001/813/131/non_2x/light-blue-green-background-with-colorful-stars-vector.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+        <!-- Hacer el nvbar, toda la parte inicial -->
+        <nav class="navbar navbar-expand-lg bg-transparent">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/#" style="color:black; margin-left: 5%;margin-right: 3%;">
+                    <img src="https://w7.pngwing.com/pngs/678/812/png-transparent-digital-marketing-openhab-graphy-home-automation-kits-tech-house-angle-text-logo.png"
+                        alt="" style="width: 64px; height: 64px; border-radius: 20px; margin-right: 20%;">
+                    <b>EquiposTechRH</b>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class=" navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li>
+                            <br>
+                            <a class=" link-underline link-underline-opacity-0" href="/#"
+                                style="color:black; font-size:20px; margin-left: 50%;">Inicio
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </a>
+                        </li>
+                        <li>
+                            <br>
+                            <!-- Llamar a la url, navegar entre páginas   -->
+                            <a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                                href="ListadoClientes.html" style="color:black; font-size:20px; ">Listado
+                                Clientes
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <hr style="color:black;">
+
+        <center>
+            <h1 style="color: black; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                EquiposTechRH
+            </h1>
+            <p>EquiposTechRH te ofrece un listado de varias computadoras que probablemente te pueden gustar</p>
+            <br>
+            <p>Tienes que registrarte para poder ver nuestro catálogo y adquirir una.</p>
+            <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <b>REGÍSTRESE</b>
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Registro Cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="needs-validation" action=""
+                                id="form-cliente" method="POST" novalidate>
+
+                                <div class="form-floating has-validation" style="text-align: left;">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="name" required>
+                                    <br>
+                                    <label for="name" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>NOMBRE</strong></label>
+                                    <br>
+                                </div>
+
+                                <div class="form-floating has-validation" style="text-align: left;">
+                                    <input type="text" name="apellido" class="form-control" id="apellido"
+                                        placeholder="apellido" required>
+                                    <br>
+                                    <label for="apellido" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>APELLIDO</strong></label>
+                                    <br>
+                                </div>
+
+                                <div class="form-floating has-validation" style="text-align: left;">
+                                    <input type="datetime-local" name="dia_hora" class="form-control" id="dia_hora"
+                                        placeholder="dia_hora" required>
+                                    <br>
+                                    <label for="dia_hora" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>DÍA Y HORA</strong></label>
+                                    <br>
+                                </div>
+
+                                <div class="form-floating has-validation" style="text-align: left;">
+                                    <input type="text" name="age" class="form-control" id="age"
+                                        placeholder="age" required>
+                                    <br>
+                                    <label for="age" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>EDAD</strong></label>
+                                    <br>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><b>CANCELAR</b></button>
+                                    <button type="submit" class="btn btn-outline-info"><b>GUARDAR</b></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <img class="img-fluid" src="img/maquina.jpg" style="border-radius: 20px;" alt="">
+            <br><br>
+            <div class ="mt-3" id="respuesta">
+
+            </div>
+        </center>
+        <br>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <img src="img/ma.jpg" height="400px" width="95%" style="border-radius: 20px;" alt="">
+                </div>
+                <div class="col">
+                    <iframe width="600" height="400" src="https://www.youtube.com/embed/d7yhsfjYoKs?si=CICQcAHs4lDifgSX"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                        style="border-radius: 20px;"></iframe>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+
+        <br>
+        <br>
+
+        <footer
+            style="background-image: url(https://i.pinimg.com/originals/c5/2f/82/c52f822a4d93b961c5f5c0273682702f.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; color: black;">
+
+            <div style="display: flex;">
+                <div style="margin-left: 5%;">
+                    <br>
+                    <br>
+                    <h2 style="font-size: 20px;"><b>EquiposTechRH</b></h2>
+                    <h2 style="font-size: 20px;"><b>Av. Mariscal Sucre y Guayanay Ñan</b></h2>
+                    <hr style="color: black; width: 160%;">
+                </div>
+                <div style="margin-left: 15%; ">
+                    <br>
+                    <br>
+                    <center>
+                        <img src="https://w7.pngwing.com/pngs/678/812/png-transparent-digital-marketing-openhab-graphy-home-automation-kits-tech-house-angle-text-logo.png"
+                            alt="" style="width: 64px; height: 64px; border-radius: 20px;">
+                    </center>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div style="margin-left: 5%;">
+                    <h2 style="font-size: 20px;">INFORMACION: </h2>
+                    <br>
+                    <p>
+                        <a href="#"
+                            class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">INICIO
+                        </a>
+                    </p>
+                    <p>
+                        <a href="#"
+                            class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Listado Clientes
+                        </a>
+                    </p>
+            </div>
+            <center>
+                <h6>EquiposTechRH &copy;</h6>
+            </center>
+            <br>
+        </footer>
+    </body>
+
+    <br /><br /><br /><br /><br />
+
+    <script>
+
+        // Fetch
+        var formulario = document.getElementById('form-cliente');
+        var respuesta = document.getElementById('respuesta');
+
+        formulario.addEventListener('submit', function(e){
+            e.preventDefault();
+            console.log('Se ha guardado')
+
+            var datos = new FormData(formulario);
+
+            console.log(datos)
+            console.log(datos.get('name'))
+            console.log(datos.get('apellido'))
+            console.log(datos.get('dia_hora'))
+            console.log(datos.get('age'))
+
+            fetch('post.php',{
+                method: 'POST',
+                body: datos
+            })
+                .then( res => res.json())
+                .then( data => {
+                    console.log(data)
+                    if(data == 'error'){
+                        respuesta.innerHTML = `
+                        <div class="alert alert-danger" role="alert">
+                            Lena todos los campos
+                        </div>
+                        `
+                    }else{
+                        respuesta.innerHTML = `
+                        <div class="alert alert-primary" role="alert">
+                            ${data}
+                        </div>
+                        `
+                    }
+                })
+        })
+    </script>
+</html>
