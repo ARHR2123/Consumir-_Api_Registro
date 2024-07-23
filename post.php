@@ -9,9 +9,6 @@ if ($name === '' || $apellido === '' || $dia_hora === '' || $age === ''){
     echo json_encode('error');
 }
 else{
-    echo json_encode('Correcto');
-    echo json_encode('Los datos ingresados son: ');
+
     echo json_encode('Nombre:'.$name.'<br>Apellido:'.$apellido.'<br>Día y Hora:'.$dia_hora.'<br>Edad:'.$age);
 }
-
-?>
