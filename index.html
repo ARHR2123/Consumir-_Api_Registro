@@ -16,6 +16,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <script src="format_date.js"></script>
+
         
     </head>
 
@@ -38,18 +40,9 @@
                     <ul class="navbar-nav">
                         <li>
                             <br>
-                            <a class=" link-underline link-underline-opacity-0" href="/#"
+                            <a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#"
                                 style="color:black; font-size:20px; margin-left: 50%;">Inicio
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </a>
-                        </li>
-                        <li>
-                            <br>
-                            <!-- Llamar a la url, navegar entre páginas   -->
-                            <a class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                                href="ListadoClientes.html" style="color:black; font-size:20px; ">Listado
-                                Clientes
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </a>
                         </li>
                     </ul>
@@ -63,6 +56,7 @@
             <h1 style="color: black; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
                 EquiposTechRH
             </h1>
+            <br>
             <p>EquiposTechRH te ofrece un listado de varias computadoras que probablemente te pueden gustar</p>
             <br>
             <p>Tienes que registrarte para poder ver nuestro catálogo y adquirir una.</p>
@@ -73,7 +67,20 @@
             </button>
             <br><br>
             <div class ="mt-3" id="respuesta">
-
+                <table class="table table-success table-striped-columns" style="width: 50%;">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Apellido</th>
+                            <th class="text-center">Dia y Hora</th>
+                            <th class="text-center">Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                        <!-- Datos de los clientes se mostrarán aquí -->
+                    </tbody>
+                </table>
             </div>
             
             <!-- Modal -->
@@ -107,7 +114,7 @@
                                 </div>
 
                                 <div class="form-floating has-validation" style="text-align: left;">
-                                    <input type="datetime-local" name="dia_hora" class="form-control" id="dia_hora"
+                                    <input type="text" name="dia_hora" class="form-control" id="dia_hora"
                                         placeholder="dia_hora" required>
                                     <br>
                                     <label for="dia_hora" class="col-form-label"
@@ -126,7 +133,7 @@
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><b>CANCELAR</b></button>
-                                    <button type="submit" class="btn btn-outline-info"><b>GUARDAR</b></button>
+                                    <button type="submit" class="btn btn-outline-info" data-bs-dismiss="modal"><b>GUARDAR</b></button>
                                 </div>
                             </form>
                         </div>
@@ -135,7 +142,6 @@
             </div>
             <br>
             <br>
-            <img class="img-fluid" src="img/maquina.jpg" style="border-radius: 20px;" alt="">
         </center>
         
         <br>
@@ -202,18 +208,85 @@
             <br>
         </footer>
     </body>
-
-    <br /><br /><br /><br /><br />
-
     <script>
 
+        // Utilización de Mysql
+
         // Fetch
-        var formulario = document.getElementById('form-cliente');
-        var respuesta = document.getElementById('respuesta');
+
+        const formulario = document.getElementById('form-cliente');
+        const url = 'http://localhost:3050/api/customers';
+
+        function fetchCustomers() {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const customerTableBody = document.getElementById('customerTableBody');
+                    customerTableBody.innerHTML = '';
+                    data.forEach(customer => {
+                        const row = `
+                            <tr>
+                                <td>${customer.id}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.apellido}</td>
+                                <td>${customer.dia_hora}</td>
+                                <td>${customer.age}</td>
+                            </tr>
+                        `;
+                        customerTableBody.innerHTML += row;
+                    });
+                })
+                .catch(error => console.log('Error al obtener clientes:', error));
+        }
+
+        //var respuesta = document.getElementById('respuesta');
 
         formulario.addEventListener('submit', function(e){
             e.preventDefault();
-            console.log('Se ha guardado')
+
+            const name = document.getElementById('name').value;
+            const apellido = document.getElementById('apellido').value;
+            const dia_hora = document.getElementById('dia_hora').value;
+            const age = document.getElementById('age').value;
+
+            // Validar campos del formulario
+            if (!name || !apellido || !age) {
+                alert('*** Todos los campos son obligatorios. ***');
+                return;
+            }
+            const customerData = { name, apellido, dia_hora, age };
+
+            console.log('Se ha guardado', customerData);
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(customerData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+                fetchCustomers(); // Asegúrate de que `fetchCustomers` esté definida
+                const exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                exampleModal.hide();
+                formulario.reset();  // Usa `formulario` aquí en lugar de volver a obtener el elemento
+            })
+            .catch(error => console.log('Error al añadir cliente:', error));
+        });
+
+        // Obtener y mostrar los clientes al cargar la página
+        document.addEventListener('DOMContentLoaded', fetchCustomers);
+
+        /*
+
+            Otro método sin utilizar mysql 
 
             var datos = new FormData(formulario);
 
@@ -233,17 +306,41 @@
                     if(data === 'error'){
                         respuesta.innerHTML = `
                             <div class="alert alert-danger" role="alert">
-                                Lena todos los campos
+                                Llena todos los campos
                             </div>
                         `
-                    }else{
+                    }else if (data.status === 'success') {
+                        // Construir la tabla HTML con los datos recibidos
+                        let tableRows = data.data.map(item => `
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.nombre}</td>
+                                <td>${item.apellido}</td>
+                                <td>${item.dia_hora}</td>
+                                <td>${item.age}</td>
+                            </tr>
+                        `).join('');
+
                         respuesta.innerHTML = `
                             <div class="alert alert-primary" role="alert">
-                                ${data}
+                                <table class="table table-hover" style="width: 50%;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">APELLIDO</th>
+                                            <th scope="col">DIA Y HORA</th>
+                                            <th scope="col">AGE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${tableRows}
+                                    </tbody>
+                                </table>
                             </div>
-                        `
+                        `;
                     }
                 })
-        })
+        })*/
     </script>
 </html>
