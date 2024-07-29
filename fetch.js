@@ -72,7 +72,7 @@ formulario.addEventListener('submit', function (e) {
         .then(data => {
             console.log('Respuesta del servidor:', data);
             fetchCustomers(); // Asegúrate de que `fetchCustomers` esté definida
-            const exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+            const exampleModal = new bootstrap.Modal(document.getElementById('exampleModalLabel'));
             exampleModal.hide();
             formulario.reset();  // Usa `formulario` aquí en lugar de volver a obtener el elemento
         })

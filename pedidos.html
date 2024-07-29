@@ -91,22 +91,22 @@
             <br>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <b>REGÍSTRESE</b>
+                <b>AÑADIR PEDIDOS</b>
             </button>
             <br><br>
             <div class ="mt-3" id="respuesta">
-                <table class="table table-success table-striped-columns" style="width: 50%;">
+                <table class="table table-success table-striped-columns" style="width: 80%;">
                     <thead>
                         <tr>
                             <th class="text-center">ID</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Apellido</th>
-                            <th class="text-center">Dia y Hora</th>
-                            <th class="text-center">Edad</th>
+                            <th class="text-center">Fecha</th>
+                            <th class="text-center">Estado</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-center">PRODUCTOS</th>
                             <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="customerTableBody">
+                    <tbody id="pedidosTableBody">
                         <!-- Datos de los clientes se mostrarán aquí -->
                     </tbody>
                 </table>
@@ -117,54 +117,58 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel" 
-                            style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-decoration:underline;">
-                            <strong>REGISTRAR CLIENTE</strong></h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel" 
+                        style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-decoration:underline;">
+                        <strong>REGISTRAR PEDIDOS</strong></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form class="needs-validation" action=""
-                                id="form-cliente" method="POST" novalidate>
+                                id="form-pedidos" method="POST" novalidate>
 
                                 <div class="form-floating has-validation" style="text-align: left;">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="name" required>
+                                    <input type="date" name="fecha" class="form-control" id="fecha"
+                                        placeholder="fecha" required>
                                     <br>
-                                    <label for="name" class="col-form-label"
-                                        style="text-align: left; color: black;"><strong>NOMBRE</strong></label>
+                                    <label for="fecha" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>FECHA</strong></label>
                                     <br>
                                 </div>
 
                                 <div class="form-floating has-validation" style="text-align: left;">
-                                    <input type="text" name="apellido" class="form-control" id="apellido"
-                                        placeholder="apellido" required>
+                                    <select class="form-select"  name="estado" id="estado" aria-label="Default select example">
+                                        <option selected>-- SELECCIONE --</option>
+                                        <option value= "Cancelado">Cancelado</option>
+                                        <option value= "Pendiente">Pendiente</option>
+                                        <option value= "Por pagar" >Por pagar</option>
+                                    </select>
                                     <br>
-                                    <label for="apellido" class="col-form-label"
-                                        style="text-align: left; color: black;"><strong>APELLIDO</strong></label>
-                                    <br>
-                                </div>
-
-                                <div class="form-floating has-validation" style="text-align: left;">
-                                    <input type="text" name="dia_hora" class="form-control" id="dia_hora"
-                                        placeholder="dia_hora" required>
-                                    <br>
-                                    <label for="dia_hora" class="col-form-label"
-                                        style="text-align: left; color: black;"><strong>DÍA Y HORA</strong></label>
+                                    <label for="estado" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>ESTADO</strong></label>
                                     <br>
                                 </div>
 
                                 <div class="form-floating has-validation" style="text-align: left;">
-                                    <input type="number" name="age" class="form-control" id="age"
-                                        placeholder="age" required>
+                                    <input type="number" name="total" class="form-control" id="total"
+                                        placeholder="total" required>
                                     <br>
-                                    <label for="age" class="col-form-label"
-                                        style="text-align: left; color: black;"><strong>EDAD</strong></label>
+                                    <label for="total" class="col-form-label"
+                                        style="text-align: left; color: black;"><strong>TOTAL</strong></label>
                                     <br>
                                 </div>
 
+                                
+                                <div class="form-floating has-validation" style="text-align: left;">
+                                    <select class="form-select" name="producto_id" id="producto_id" required>
+                                        <option value="" disabled selected>-- SELECCIONE --</option>
+                                    </select>
+                                    <br>
+                                    <label for="producto_id" class="col-form-label" style="text-align: left; color: black;"><strong>PRODUCTO</strong></label>
+                                </div>
+                               
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><b>CANCELAR</b></button>
-                                    <button type="submit" class="btn btn-outline-info" data-bs-dismiss="modal"><b>GUARDAR</b></button>
+                                    <button type="reset" class="btn btn-outline-danger" data-bs-dismiss="modal"><b>CANCELAR</b></button>
+                                    <button type="submit" class="btn btn-outline-info"><b>GUARDAR</b></button>
                                 </div>
                             </form>
                         </div>
@@ -174,29 +178,8 @@
             <br>
             <br>
         </center>
-        
-        <br>
         <hr>
-        <br>
-        <div class="container">
-            <div class="row align-items-start">
-                <div class="col">
-                    <img src="img/ma.jpg" height="400px" width="95%" style="border-radius: 20px;" alt="">
-                </div>
-                <div class="col">
-                    <iframe width="600" height="400" src="https://www.youtube.com/embed/d7yhsfjYoKs?si=CICQcAHs4lDifgSX"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                        style="border-radius: 20px;"></iframe>
-                </div>
-            </div>
-        </div>
-        <br>
-        <hr>
-
-        <br>
-        <br>
+        <br><br>
 
         <footer
             style="background-image: url(https://i.pinimg.com/originals/c5/2f/82/c52f822a4d93b961c5f5c0273682702f.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; color: black;">
@@ -229,7 +212,7 @@
                     </p>
                     <p>
                         <a href="#"
-                            class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Listado Clientes
+                            class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">PRODUCTOS
                         </a>
                     </p>
             </div>
@@ -239,5 +222,5 @@
             <br>
         </footer>
     </body>
-    <script src="fetch.js"></script>
+    <script src="pedidos.js"></script>
 </html>
