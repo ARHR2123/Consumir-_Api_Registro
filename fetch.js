@@ -4,7 +4,7 @@
 // Fetch
 
 const formulario = document.getElementById('form-cliente');
-const url = 'http://18.117.174.93:3050/api/customers';
+const url = 'https://18.117.174.93:3050/api/customers';
 
 // Visualización de datos
 
