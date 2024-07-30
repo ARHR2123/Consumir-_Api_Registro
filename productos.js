@@ -70,11 +70,11 @@ formulario.addEventListener('submit', function (e) {
     const cliente_id = document.getElementById('cliente_id').value;
 
     // Validar campos del formulario
-    if (!nombre || !precio || !Estado || !descripcion || !cliente_id) {
+    if (!nombre || !precio || !Estado || !descripcion) {
         alert('*** Todos los campos son obligatorios. ***');
         return;
     }
-    const productoData = { nombre, precio, Estado, descripcion, cliente_id};
+    const productoData = { nombre, precio, Estado, descripcion};
 
     console.log('Se ha guardado el producto', productoData);
 

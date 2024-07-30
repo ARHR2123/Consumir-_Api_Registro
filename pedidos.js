@@ -65,11 +65,11 @@ formulario.addEventListener('submit', function (e) {
     const producto_id = document.getElementById('producto_id').value;
 
     // Validar campos del formulario
-    if (!fecha || !estado || !total || !producto_id) {
+    if (!fecha || !estado || !total ) {
         alert('*** Todos los campos son obligatorios. ***');
         return;
     }
-    const pedidoData = { fecha, estado, total, producto_id};
+    const pedidoData = { fecha, estado, total};
 
     console.log('Se ha guardado el pedido', pedidoData);
 

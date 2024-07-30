@@ -68,11 +68,11 @@ formulario.addEventListener('submit', function (e) {
     const dia = document.getElementById('dia').value;
 
     // Validar campos del formulario
-    if (!cliente_id || !fecha || !estado || !dia ) {
+    if ( !fecha || !estado || !dia ) {
         alert('*** Todos los campos son obligatorios. ***');
         return;
     }
-    const reservaData = { cliente_id, fecha, estado, dia};
+    const reservaData = { fecha, estado, dia};
 
     console.log('Se ha guardado la reserva', reservaData);
 
