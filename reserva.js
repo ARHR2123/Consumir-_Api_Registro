@@ -4,8 +4,8 @@
 // Fetch
 
 const formulario = document.getElementById('form-reserva');
-const url = 'http://localhost:3050/api/reservas';
-const url2 = 'http://localhost:3050/api/registros';
+const url = 'http://18.188.133.98:3050/api/reservas';
+const url2 = 'http://18.188.133.98:3050/api/registros';
 
 
 // Visualización de datos
