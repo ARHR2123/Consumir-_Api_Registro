@@ -4,7 +4,7 @@
 // Fetch
 
 const formulario = document.getElementById('form-evento');
-const url = 'http://18.188.133.98:3050/api/eventos';
+const url = 'http://3.129.128.247:3050/api/eventos';
 
 
 // Visualización de datos
